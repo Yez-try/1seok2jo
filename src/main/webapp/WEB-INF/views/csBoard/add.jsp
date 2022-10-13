@@ -27,7 +27,7 @@
         <div class="add_box" style="width:80%; margin: 150px auto 50px auto; padding: 1.7em; box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
         <div class="mb-4"><h2 style="text-align:center;">문의하기📬</h2></div>
             
-                <form action="./add" method="post">
+                <form action="./add" method="post" id="csSubmit">
 
                     <div class="d-flex row">
                         <div class="flex-fill col-8">
@@ -51,16 +51,17 @@
 	                        <input type="text" name = "id" readonly value="${member.id}" class="form-control" id="id">
                         </c:if>
                         <c:if test="${empty sessionScope.member}">
-	                        <input type="text" name = "id" class="form-control" id="id">
+	                        <input type="text" name = "id" class="form-control" id="id" readonly value="none">
+                            <label><small style="color: firebrick;"> 문의내역을 확인하고 싶으신 경우 로그인 후 문의해주세요</small></label><br>
                         </c:if>
                         <label for="" class="text-muted">전화번호</label>
-                        <input type="text" name = "cs_phone" placeholder="010-0000-0000" value="${member.phone}" class="form-control" id="exampleFormControlInput1">
+                        <input type="text" name = "cs_phone" placeholder="010-0000-0000" value="${member.phone}" class="form-control" id="cs_phone">
                         <label for="" class="text-muted">이메일</label>
-                        <input type="text" name="cs_email" placeholder="example@oooo.com" value="${member.email}" class="form-control" id="exampleFormControlInput1">
+                        <input type="text" name="cs_email" placeholder="example@oooo.com" value="${member.email}" class="form-control" id="cs_email">
                     </div>
         			<div class="d-flex justify-content-end">	
 	                    <div class="mt-4 mb-1" style="text-align: right;">
-	                    <input class="btn btn-success text-white" type="submit" value="작성하기" >
+	                    <input id="csSubmitBtn" class="btn btn-success text-white" type="button" value="작성하기" >
 	                    </div>
                     </div>			
                 </form>
@@ -79,5 +80,6 @@
                 });
 
 </script>
+<script src="/resources/js/csAdd.js"></script>
 </body>
 </html>

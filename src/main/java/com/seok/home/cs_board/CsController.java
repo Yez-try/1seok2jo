@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.seok.home.member.MemberDTO;
 import com.seok.home.s_board.StudyBoardDTO;
@@ -42,10 +43,21 @@ public class CsController {
 	}
 	
 	@PostMapping("add")
-	public String setBoardAdd(CsBoardDTO csBoardDTO) throws Exception {
+	public ModelAndView setBoardAdd(CsBoardDTO csBoardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		int result = csService.setBoardAdd(csBoardDTO);
+		if(csBoardDTO.getId().equals("none")) {
+            
+			mv.addObject("message", "작성이 완료 되었습니다.");
+			mv.addObject("url", "/");
+		}else {
+			mv.addObject("message", "작성이 완료 되었습니다.");
+			mv.addObject("url", "redirect:/csBoard/mylist");
+			
+		}
+		mv.setViewName("common/result");
 		
-		return "redirect:/csBoard/mylist"; //마이페이지의 내문의 페이지로
+		return mv; //마이페이지의 내문의 페이지로
 	}
 	
 	@GetMapping("mylist")
