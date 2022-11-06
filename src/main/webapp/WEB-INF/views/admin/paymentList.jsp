@@ -80,6 +80,9 @@
                                     <input type="radio" id="old" name="orderby" value="old" style="display: none;" >
                                     <label id="oldlb" for="old">⌛ 오래된 순</label>
                                 </div>
+                                <div class="p-2 flex-fill text-end pe-5">
+                                    <button type="button" onclick=doPopupopen()>CSV로 내보내기</button>
+                                </div>
                               </div>
                         </div>
                         <div class="card mb-4 mt-2">
@@ -108,6 +111,10 @@
         <script>
         initpay()
         </script>
-        
+	    <script type="text/javascript">
+	        function doPopupopen() {
+	            window. open("", "_blank", "width=300, height=360");
+	        }
+	    </script>
     </body>
 </html>
